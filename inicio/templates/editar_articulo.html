@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}Crear Artículo{% endblock %}
+{% block title %}Editar Artículo{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            
+
             <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Crear nuevo artículo</h4>
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">Editar artículo</h4>
                 </div>
 
                 <div class="card-body">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         {% for field in form %}
@@ -28,7 +28,7 @@
 
                         <div class="d-flex justify-content-between mt-3">
                             <a href="{% url 'listar_articulos' %}" class="btn btn-secondary">Cancelar</a>
-                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <button type="submit" class="btn btn-success">Guardar cambios</button>
                         </div>
                     </form>
                 </div>
@@ -39,4 +39,3 @@
     </div>
 </div>
 {% endblock %}
-

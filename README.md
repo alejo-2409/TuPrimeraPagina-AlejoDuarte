@@ -1,4 +1,4 @@
-# Mi Catálogo de Artículos de Limpieza
+# Mi Catálogo de Artículos de Limpieza 
 Página web de catálogo y gestión de artículos de limpieza construida con el framework web Django.
 
 
@@ -19,14 +19,11 @@ Para ejecutar las migraciones de Django para crear las tablas en la base de dato
 
 En la carpeta del proyecto llamada PrimeraPagina estarán las configuraciones necesarias en el archivo settings.py y en el archivo urls.py están las rutas que va a seguir el server a la hora de ejecutarse.
 
-Dentro de la carperta de la aplicación inicio estarán los archivos:
-- Models: En este se define la estructura de la tabla Articulo (campos articulo y marca).
-- Urls: Mapea las URL como /crear-articulo/... y /listado-articulos a sus funciones correspondientes en views.py.
-- Views:Contiene las funciones  crear_articulo y listar_articulo.
-- Carpeta templates. Dentro de la cual tendremos los archivos:
-    - crear_articulo.html
-    - listar_articulo.html
+## ✨ Características Principales y Requisitos Cumplidos
 
-Una vez ejecutado el proyecto con el comando python manage.py runserver:
-- Con el link http://127.0.0.1:8000/crear-articulo/<articulo>/<marca> podemos sumar artículos a la lista 
-- Con el link http://127.0.0.1:8000/listado-articulos podemos ver la lista de artículos generada
+* **Autenticación Completa:** Incluye vistas de Login, Logout y Registro para usuarios.
+* **Vistas Basadas en Clases (CBV):** Uso de CBV (ListView, CreateView, etc.) para el manejo del modelo principal.
+* **Seguridad:** Implementación de **LoginRequiredMixin** para proteger vistas sensibles (edición, creación, borrado) y uso de decoradores en vistas comunes.
+* **Modelo Principal:** Modelo `Articulo` con 3 campos de texto (o número) y 1 campo de imagen.
+* **Herencia de Templates:** Uso de `base.html` para un diseño consistente.
+* **CRUD Funcional:** Implementación completa de las 5 vistas para gestión del modelo.

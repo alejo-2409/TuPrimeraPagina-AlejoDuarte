@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>¿Seguro que querés borrar este artículo?</h2>
+
+<p><strong>{{ object.tipo }} - {{ object.marca }}</strong></p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, borrar</button>
+    <a href="{% url 'listar_articulos' %}">Cancelar</a>
+</form>
+
+{% endblock %}

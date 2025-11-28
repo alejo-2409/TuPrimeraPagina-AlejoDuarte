@@ -1,12 +1,47 @@
-'<h1> Lista de Artículos</h1>'
-<ul>        
-    {% for articulo in listado_de_articulos %}
-        
-    
-    <li>
+{% extends "base.html" %}
 
-        {{articulo}}
+{% block title %}Artículos{% endblock %}
 
-    </li>
-    {% endfor %}
-</ul>
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Listado de Artículos</h1>
+        <a href="{% url 'crear_articulo' %}" class="btn btn-primary">
+            Crear nuevo artículo
+        </a>
+    </div>
+
+    {% if listado_de_articulos %}
+        <div class="row">
+            {% for articulo in listado_de_articulos %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        {% if articulo.imagen %}
+                            <img src="{{ articulo.imagen.url }}" 
+                            class="card-img-top" 
+                            alt="{{ articulo.titulo }}"  
+                            style="height: 220px; width: 100%; object-fit: contain; background: #f8f9fa;">
+                        {% endif %}
+                        <div class="card-body" >
+                            <h5 class="card-title">{{ articulo.tipo }} - {{ articulo.marca }}</h5>
+                            <p class="card-text text-muted" style="min-height: 60px;">
+                             Stock disponible: {{ articulo.stock }}
+                            </p>
+
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'actualizar_articulo' articulo.id %}" class="btn btn-sm btn-outline-warning">Editar</a>
+                                <a href="{% url 'borrar_articulo' articulo.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="alert alert-info">
+            No hay artículos cargados aún.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
